@@ -2,7 +2,7 @@ import React from 'react'
 import BooksList from './BooksList'
 import Book from './Book'
 import SearchFilter from './SearchFilter'
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
@@ -23,8 +23,33 @@ console.log(books);
     return (     
       <div className="app">
    		 <Route exact path="/" render={() =>  (
-        <BooksList books={this.state.books}
-        />
+                        <div className="list-books">
+                        <div className="list-books-title">
+                            <h1>MyReads</h1>
+                        </div>
+                        <div className="list-books-content">
+                            <div>
+                                <BooksList
+                                    title="Currently Reading"
+                                    
+                                    changeShelf={this.changeShelf}
+                                />
+                                <BooksList
+                                    title="Want to Read"
+                                   
+                                    changeShelf={this.changeShelf}
+                                />
+                                <BooksList
+                                    title="Read"
+                                   
+                                    changeShelf={this.changeShelf}
+                                />
+                            </div>
+                        </div>
+                        <div className="open-search">
+                            <Link to="/search">Add a book</Link>
+                        </div>
+                    </div>
       )}/>
 
       <Route path="/search" render={({ history }) => (
