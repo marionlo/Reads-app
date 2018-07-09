@@ -26,6 +26,7 @@ class SearchFilter extends Component {
           </div>
   )
   }
+}
 
 
 export default SearchFilter
