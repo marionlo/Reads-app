@@ -1,6 +1,5 @@
 import React from 'react'
 import BooksList from './BooksList'
-import Book from './Book'
 import SearchFilter from './SearchFilter'
 import { Route, Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
@@ -18,6 +17,14 @@ console.log(books);
   })
   }
 
+changeShelf = (event) => {
+    BooksAPI.update({id: event.target.id}, event.target.value).then((response) => {
+       BooksAPI.getAll().then((books) => {
+        this.setState({Books: books})
+      });
+    });
+  }
+
   render() {
 
     return (     
@@ -31,12 +38,12 @@ console.log(books);
                             <div>
                                 <BooksList
                                     title="Currently Reading"
-                                    
+                                   books={this.state.books}
                                     changeShelf={this.changeShelf}
                                 />
                                 <BooksList
                                     title="Want to Read"
-                                   
+                                  
                                     changeShelf={this.changeShelf}
                                 />
                                 <BooksList
