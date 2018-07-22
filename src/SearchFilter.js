@@ -18,7 +18,7 @@ updateQuery = (query) => {
 }
 
 updateSearchedBooks = () => {
-  if (this.state.query) {
+  if (this.state.query.length > 1) {
   BooksAPI.search(this.state.query).then((searchedBooks) => {
     if (searchedBooks.error) {
       this.setState({searchedBooks: []});
@@ -56,7 +56,8 @@ updateSearchedBooks = () => {
                   <li key={searchedBooks.id} >
 					<Book 
 						book={searchedBooks}
-						onUpdateShelf={this.props.onUpdateShelf} 
+						onUpdateShelf={this.props.onUpdateShelf}
+						
 						/>
 					</li>
                  ))

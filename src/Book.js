@@ -9,7 +9,7 @@ class Book extends Component {
 
   render () {
     const { book, onUpdateShelf } = this.props;
-    const showThumbnail = this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : '';
+    const showThumbnail = book.imageLinks ? book.imageLinks.thumbnail : '';
     return (
       
         <div className="book">
