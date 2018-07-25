@@ -1,11 +1,12 @@
 # MyReads Project
 
-In this MyReads App, you can create your bookshelf that allows you to select and categorize books in below order:
+In this App, you can create your custom bookshelf that will allow you to select and categorize books in 3 categories:
 
 * Currently reading
 * Want to read
 * Read
-You can search books with selected queries and sort the books in the bookshelf where you want to assign them.
+
+You can also search for some books with selected queries and add them in the bookshelf where you want to assign them.
 
 The application is developed using ReactJS framework.
 
