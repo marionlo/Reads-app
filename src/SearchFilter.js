@@ -7,7 +7,7 @@ class SearchFilter extends Component {
   
 state = {
   	query: '',
-	 searchedBooks: []
+	 searchedBooks: [],
 }
 
 updateQuery = (query) => {
@@ -17,20 +17,19 @@ updateQuery = (query) => {
   this.updateSearchedBooks(query);
 }
 
-updateSearchedBooks = () => {
-  if (this.state.query.length > 1) {
-  BooksAPI.search(this.state.query).then((searchedBooks) => {
-    if (searchedBooks.error) {
-      this.setState({searchedBooks: []});
-    } else { 
-      this.setState({searchedBooks})
+updateSearchedBooks = (query) => {
+    if (query) {
+      BooksAPI.search(query).then((searchedBooks) => {
+        if (searchedBooks.error) {
+          this.setState({ searchedBooks: [] });
+        } else {
+          this.setState({ searchedBooks })
+        }
+      })
+    } else {
+      this.setState({ searchedBooks: [] });
     }
-  })
   }
-  else { 
-    this.setState({searchedBooks: []})
-  }
-}
 
   render() {
 
