@@ -18,11 +18,19 @@ updateQuery = (query) => {
 }
 
 updateSearchedBooks = (query) => {
+  var vm = this;
     if (query) {
       BooksAPI.search(query).then((searchedBooks) => {
         if (searchedBooks.error) {
           this.setState({ searchedBooks: [] });
         } else {
+          for (var i = 0; i <vm.props.books.length; i++) 
+          {for (var j=0; j< searchedBooks.length; j++) {
+            if (vm.props.books[i].id === 	searchedBooks[j].id) {
+                searchedBooks[j].shelf = vm.props.books[i].shelf
+         	 }
+          }
+        }
           this.setState({ searchedBooks })
         }
       })
@@ -56,7 +64,7 @@ updateSearchedBooks = (query) => {
 					<Book 
 						book={searchedBooks}
 						onUpdateShelf={this.props.onUpdateShelf}
-						
+						books={this.props.books}
 						/>
 					</li>
                  ))
